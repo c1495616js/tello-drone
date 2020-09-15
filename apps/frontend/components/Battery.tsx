@@ -28,7 +28,7 @@ interface IProps {
   battery: number;
 }
 
-const Batter: React.FC<IProps> = ({ battery = 60 }) => (
+const Battery: React.FC<IProps> = ({ battery = 60 }) => (
   <BatteryStyles level={battery}>
     <span className="batteryLevel">{battery}%</span>
   </BatteryStyles>

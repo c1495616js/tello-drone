@@ -1,22 +1,36 @@
 import React from 'react';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import { ReactComponent as NxLogo } from '../public/nx-logo-white.svg';
-import './styles.css';
+import styled, { createGlobalStyle } from 'styled-components';
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    background: white;
+    font-family: 'Operator Mono', monospace;
+    font-weight: 900;
+    font-size: 1rem;
+    background: #193549;
+    color: white;
+  }
+`;
+
+const PageStyles = styled.div`
+  max-width: 500px;
+  margin: 0 auto;
+`;
 
 const CustomApp = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <Head>
-        <title>Welcome to frontend!</title>
+        <title>Tello Drone</title>
       </Head>
       <div className="app">
-        <header className="flex">
-          <NxLogo width="75" height="50" />
-          <h1>Welcome to frontend!</h1>
-        </header>
         <main>
-          <Component {...pageProps} />
+          <PageStyles>
+            <GlobalStyle />
+            <Component {...pageProps} />
+          </PageStyles>
         </main>
       </div>
     </>
