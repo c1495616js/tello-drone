@@ -6,6 +6,7 @@ This project was generated using [Nx](https://nx.dev).
 ## Refs
 
 - https://github.com/agborkowski/nestjs-sample-udp-server
+- https://github.com/wesbos/javascript-drones
 
 ## Dev
 
