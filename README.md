@@ -3,6 +3,19 @@
 ![](https://i.imgur.com/MhLB70m.png)
 This project was generated using [Nx](https://nx.dev).
 
+## Refs
+
+- https://github.com/agborkowski/nestjs-sample-udp-server
+
+## Dev
+
+### Generate Backend `nest.js`
+
+```
+npm install --save-dev @nrwl/nest
+nx g @nrwl/nest:app backend
+```
+
 - [React](https://reactjs.org)
   - `npm install --save-dev @nrwl/react`
 - Web (no framework frontends)

@@ -15,7 +15,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@tello-drone/dgram": ["libs/dgram/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

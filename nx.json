@@ -28,6 +28,12 @@
     "frontend-e2e": {
       "tags": [],
       "implicitDependencies": ["frontend"]
+    },
+    "backend": {
+      "tags": []
+    },
+    "dgram": {
+      "tags": []
     }
   }
 }
