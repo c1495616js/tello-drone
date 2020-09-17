@@ -7,6 +7,14 @@ This project was generated using [Nx](https://nx.dev).
 
 - https://github.com/agborkowski/nestjs-sample-udp-server
 - https://github.com/wesbos/javascript-drones
+- https://github.com/AlexanderGranhof/tello-drone
+
+#### dgram
+
+- https://www.itread01.com/content/1547298606.html
+- https://node.readthedocs.io/en/latest/api/dgram/
+- https://github.com/dex4er/js-dgram-as-promised
+- https://docs.nestjs.com/websockets/gateways
 
 ## Dev
 
