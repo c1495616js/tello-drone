@@ -1,5 +1,6 @@
 import { Module, DynamicModule } from '@nestjs/common';
 import { SocketOptions, BindOptions } from 'dgram';
+import { ExtendBindOptions } from '../common/interface';
 
 import { createDgramProviders } from './dgram.providers';
 import { DgramService } from './dgram.service';
@@ -10,7 +11,7 @@ import { DgramService } from './dgram.service';
 })
 export class DgramModule {
   static forRoot(
-    bindOptions: BindOptions[] = [{ port: 3000 }, { port: 3001 }],
+    bindOptions: ExtendBindOptions[] = [],
     socketOptions: SocketOptions = { type: 'udp4' },
     onMessage: () => void = () => {}
   ): DynamicModule {

@@ -1,16 +1,13 @@
 import { createSocket, BindOptions, SocketOptions, Socket } from 'dgram';
-
-import { DRONE_SOCKET, DRONE_STATUS_SOCKET } from './dgram.constants';
-
-type Token = typeof DRONE_SOCKET | typeof DRONE_STATUS_SOCKET;
+import { ExtendBindOptions } from '../common/interface';
 
 export const createDgramProviders = (
-  bindOptions: BindOptions[] = [{ port: 3000 }, { port: 3001 }],
+  bindOptions: ExtendBindOptions[],
   socketOptions: SocketOptions = { type: 'udp4' },
   onMessage: () => void = () => {}
 ) => {
-  const ProviderFactory = (token: Token, key: number) => ({
-    provide: token,
+  const ProviderFactory = (extendBindOption: ExtendBindOptions) => ({
+    provide: extendBindOption.token,
     useFactory: () => {
       console.log('socketOptions');
       console.log(socketOptions);
@@ -19,15 +16,12 @@ export const createDgramProviders = (
         console.log('bindOptions');
         console.log(bindOptions);
         return new Promise((resolve) =>
-          socket.bind(bindOptions[key], () => resolve(socket))
+          socket.bind(extendBindOption, () => resolve(socket))
         );
       } catch (error) {
         console.error('error:', error);
       }
     },
   });
-  return [
-    ProviderFactory(DRONE_SOCKET, 0),
-    ProviderFactory(DRONE_STATUS_SOCKET, 1),
-  ];
+  return bindOptions.map((bindOption) => ProviderFactory(bindOption));
 };

@@ -32,15 +32,22 @@ export class EventsGateway implements OnGatewayInit, OnGatewayConnection {
     private readonly processService: ProcessService
   ) {}
   private drone: DgramSocket;
+  @WebSocketServer() server: Server;
+  private logger: Logger = new Logger('AppGateway');
 
   afterInit(server: Server) {
     this.logger.log('Init');
-    const [drone, droneStatus] = this.dgramService.createDgramSocket();
+    const [
+      drone,
+      droneStatus,
+      droneStream,
+    ] = this.dgramService.createDgramSocket();
     this.drone = drone;
 
     this.processService.onMessage(drone, (msg) =>
       console.log('drone:', msg.toString())
     );
+
     this.processService.onMessage(
       droneStatus,
       throttle((state) => {
@@ -48,11 +55,14 @@ export class EventsGateway implements OnGatewayInit, OnGatewayConnection {
         this.server.emit('dronestate', formattedState);
       }, 100)
     );
+
+    this.processService.onMessage(
+      droneStream,
+      throttle((stream) => {}, 100)
+    );
+
     this.processService.send(drone, 'command');
   }
-
-  @WebSocketServer() server: Server;
-  private logger: Logger = new Logger('AppGateway');
 
   handleConnection(client: Socket, ...args: any[]) {
     this.logger.log(`Client connected: ${client.id}`);

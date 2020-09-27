@@ -124,6 +124,10 @@ const Commands = () => (
     <button onClick={sendCommand('curve 100 100 100 150 250 350 50')}>
       Curve!
     </button>
+    {/*  */}
+    <h2>Stream</h2>
+    <button onClick={sendCommand('streamon')}>Stream On</button>
+    <button onClick={sendCommand('streamoff')}>Stream Off</button>
   </CommandGrid>
 );
 

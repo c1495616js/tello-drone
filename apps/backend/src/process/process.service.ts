@@ -6,16 +6,11 @@ export class ProcessService {
   onMessage(dgramSocket: Socket, callback: (msg: Buffer) => void) {
     dgramSocket.on('message', callback);
   }
-  async send(dgramSocket: Socket, command: string) {
-    console.log('send command:', command);
+  async send(dgramSocket: Socket, command: string, port = DRONE_PORT) {
+    console.log('send command: ', command);
 
-    dgramSocket.send(
-      command,
-      0,
-      command.length,
-      DRONE_PORT,
-      DRONE_HOST,
-      (err) => console.error('Command Error:', err)
+    dgramSocket.send(command, 0, command.length, port, DRONE_HOST, (err) =>
+      console.error('Command Error: ', err)
     );
   }
 }
