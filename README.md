@@ -16,6 +16,10 @@ This project was generated using [Nx](https://nx.dev).
 - https://github.com/dex4er/js-dgram-as-promised
 - https://docs.nestjs.com/websockets/gateways
 
+#### websocket
+
+- https://gabrieltanner.org/blog/nestjs-realtime-chat
+
 ## Dev
 
 ### Generate Backend `nest.js`
