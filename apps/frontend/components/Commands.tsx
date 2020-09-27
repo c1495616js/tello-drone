@@ -70,9 +70,9 @@ const CommandGrid = styled.div`
 
 const sendCommand = (command) => () => {
   console.log(`Sending the command ${command}`);
-  // socket.emit('command', command);
+  socket.emit('command', command);
 };
-const amount = 100;
+const amount = 100; // cm
 
 const Commands = () => (
   <CommandGrid>
@@ -82,7 +82,7 @@ const Commands = () => (
     <button onClick={sendCommand(`forward ${amount}`)}>
       <span className="symbol">↑</span> forward {amount}cm
     </button>
-    <button className="rotate">
+    <button className="rotate" onClick={sendCommand('cw 15')}>
       <span className="symbol">⟳</span> 15°
     </button>
     {/*  */}
