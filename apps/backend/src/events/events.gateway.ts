@@ -14,7 +14,9 @@ import { throttle } from 'lodash';
 
 import { DgramService } from '../dgram/dgram.service';
 import { ProcessService } from '../process/process.service';
+import { spawn } from 'child_process';
 
+// import * as ffmpeg from 'fluent-ffmpeg';
 function parseState(state: string) {
   return state
     .split(';')
@@ -58,8 +60,30 @@ export class EventsGateway implements OnGatewayInit, OnGatewayConnection {
 
     this.processService.onMessage(
       droneStream,
-      throttle((stream) => {}, 100)
+      throttle((stream) => {
+        this.server.emit('dronestream', stream);
+      })
     );
+
+    // var args = [
+    //   '-i',
+    //   'udp://0.0.0.0:11111',
+    //   '-r',
+    //   '30',
+    //   '-s',
+    //   '960x720',
+    //   '-codec:v',
+    //   'mpeg1video',
+    //   '-b',
+    //   '800k',
+    //   '-f',
+    //   'mpegts',
+    //   'http://127.0.0.1:3001/stream',
+    // ];
+
+    // // Spawn an ffmpeg instance
+    // var streamer = spawn('ffmpeg', args);
+    // console.log(streamer;
 
     this.processService.send(drone, 'command');
   }

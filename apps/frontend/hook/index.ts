@@ -36,3 +36,15 @@ export const useSocket = () => {
 
   return status;
 };
+
+export const useDroneStream = () => {
+  const [droneStream, updateDroneStream] = useState<any>();
+
+  useEffect(() => {
+    socket.on('dronestream', updateDroneStream);
+    console.log(droneStream);
+    return () => socket.removeListener('dronestream');
+  }, []);
+
+  return droneStream;
+};

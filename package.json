@@ -27,6 +27,7 @@
   },
   "private": true,
   "dependencies": {
+    "@cycjimmy/jsmpeg-player": "^5.0.1",
     "@nestjs/common": "^7.0.0",
     "@nestjs/core": "^7.0.0",
     "@nestjs/platform-express": "^7.0.0",
@@ -34,6 +35,7 @@
     "@nestjs/websockets": "^7.4.4",
     "@types/lodash": "^4.14.161",
     "document-register-element": "1.13.1",
+    "fluent-ffmpeg": "^2.1.2",
     "lodash": "^4.17.20",
     "next": "9.5.2",
     "react": "16.13.1",
@@ -62,6 +64,7 @@
     "@nrwl/web": "10.2.0",
     "@nrwl/workspace": "10.2.0",
     "@testing-library/react": "10.4.1",
+    "@types/fluent-ffmpeg": "^2.1.15",
     "@types/jest": "26.0.8",
     "@types/node": "~8.9.4",
     "@types/react": "16.9.38",

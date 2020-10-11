@@ -20,6 +20,18 @@ This project was generated using [Nx](https://nx.dev).
 
 - https://gabrieltanner.org/blog/nestjs-realtime-chat
 
+## Video Stream
+
+```
+brew install ffmpeg
+```
+
+ffplay:
+
+```
+ffplay -f h264 -i udp://192.168.10.1:11111
+```
+
 ## Dev
 
 ### Generate Backend `nest.js`
